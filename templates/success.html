@@ -1,0 +1,13 @@
+{% extends "layout.html"%}
+
+{% block heading %}
+<title>Logging In</title>
+{% endblock %}
+{% block body %}
+<div style="text-align: center">
+<h1><div class="alert alert-primary" role="alert">
+   You have sign up successfully
+  </div></h1>
+  <a  class="alert alert-success" role="alert" href="{{ url_for('login') }}">Return to login</a>
+</div>
+{% endblock %}
