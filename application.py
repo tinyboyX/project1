@@ -42,13 +42,20 @@ def signing_up():
     db.commit()
     return render_template("success.html")
 
-@app.route("/menu" , methods=["GET"] )
-def menu():
+@app.route("/logging_in" , methods=["GET"] )
+def logging_in():
     name = request.form.get("name")
     password = request.form.get("password")
-    if 
+    if db.execute("SELECT * FROM users WHERE name = :name AND password = :password",
+         {"name": name,"password": password}).rowcount == 1:
+        return render_template("menu.html")
+    else:
+         return render_template("login.html")
+
+@app.route("/menu" , methods=["GET"] )
+def menu():
     return render_template("menu.html")
 
 @app.route("/books")
-def sign_up():
+def books():
     return render_template("books.html")
