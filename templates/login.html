@@ -1,7 +1,7 @@
 {% extends "layout.html"%}
 
 {% block heading %}
-<title>Welcom to my website</title>
+<title>Welcome to my website</title>
 {% endblock %}
 {% block body %}
 <h1>Welcom to our website</h1>
@@ -19,7 +19,7 @@
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <a  class = "btn btn-primary" href="{{ url_for('menu') }}">Login</a>
     <a  class = "btn btn-success" href="{{ url_for('sign_up') }}">Sign up</a>
   </form>
 {% endblock %}

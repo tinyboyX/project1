@@ -36,8 +36,19 @@ def signing_up():
     if name =="" or password =="":
         return render_template("sign_up.html", message = "Username and password can not be empty")
     elif db.execute("SELECT * FROM users WHERE name = :name", {"name": name}).rowcount == 1:
-         return render_template("sign_up.html", message = "Username are already exist")
+        return render_template("sign_up.html", message = "Username are already exist")
     db.execute("INSERT INTO users (name, password) VALUES (:name, :password)",
-                    {"name": name, "password": password})
+                {"name": name, "password": password})
     db.commit()
     return render_template("success.html")
+
+@app.route("/menu" , methods=["GET"] )
+def menu():
+    name = request.form.get("name")
+    password = request.form.get("password")
+    if 
+    return render_template("menu.html")
+
+@app.route("/books")
+def sign_up():
+    return render_template("books.html")
