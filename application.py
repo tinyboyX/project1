@@ -42,17 +42,18 @@ def signing_up():
     db.commit()
     return render_template("success.html")
 
-@app.route("/logging_in" , methods=["GET"] )
-def logging_in():
-    name = request.form.get("name")
-    password = request.form.get("password")
-    if db.execute("SELECT * FROM users WHERE name = :name AND password = :password",
-         {"name": name,"password": password}).rowcount == 1:
+@app.route("/loging_in", methods = ["POST"])
+def loging_in():
+    name = request.form.get('name')
+    password  = request.form.get('password')
+    if db.execute("SELECT * FROM users WHERE username = :name AND password = :password",{"name": name, "password":password}).rowcount == 1:
+        session["logged_in"] = True
+        session["username"] = name
         return render_template("menu.html")
     else:
-         return render_template("login.html")
+        return render_template("login.html", message = "Your username or password is incorrect!")
 
-@app.route("/menu" , methods=["GET"] )
+@app.route("/menu" , methods=["POST"] )
 def menu():
     return render_template("menu.html")
 
