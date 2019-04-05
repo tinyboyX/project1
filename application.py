@@ -54,7 +54,7 @@ def loging_in():
     else:
         return render_template("login.html", message = "Your username or password is incorrect!")
 
-@app.route("/menu" , methods=["POST"] )
+@app.route("/menu")
 def menu():
     return render_template("menu.html")
 

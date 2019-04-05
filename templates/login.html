@@ -5,7 +5,8 @@
 {% endblock %}
 {% block body %}
 <h1>Welcom to our website</h1>
-<form>
+<!-- You missed the action and method here you idiot -->
+<form action="{{ url_for('loging_in') }}" method = "POST">
     <div class="form-group">
       <label for="exampleInputUsername1">Username</label>
       <input type="Username" class="form-control"  name="name" aria-describedby="UsernameHelp" placeholder="Username">
@@ -18,8 +19,13 @@
     <div class="form-group form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div class="form-group" >
-    <a  class = "btn btn-primary" href="{{ url_for('loging_in') }}">Login</a>
+      <!-- You also do not close the div here -->
+    </div>
+    <!-- I dont know wtf you are doing here? What is </div class = "from-group"?? -->
+    <!-- </div> use for closing a div -->
+    <div class="form-group" >
+    <button class = "btn btn-primary" name="button">Login</button>
+    </div>
     <a  class = "btn btn-success" href="{{ url_for('sign_up') }}">Sign up</a>
   </form>
 {% endblock %}
