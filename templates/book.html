@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    <title>
+        {% for book in books %}
+            {{ book.title }}
+        {% endfor %}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endblock %}
+
+{% block body %}
+    <div class = custom_div>
+        {% for book in books %}
+        <h1 class="display-4">{{ book.title }}</h1>
+        <p class="lead">Author: {{ book.author }}</p>
+        <hr class="my-4">
+        <p>Isbn: {{ book.isbn }}</p>
+        <p>Year: {{ book.year }}</p>
+        {% endfor %}
+    </div>
+{% endblock %}

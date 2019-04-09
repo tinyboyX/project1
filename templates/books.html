@@ -1,10 +1,40 @@
 {% extends "layout.html" %}
 
-{% block title %}
-<title class="alert alert-primary" role="alert">LIST OF BOOKS</title>
+{% block heading %}
+    <title>Books Table</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .title{
+        text-align:center;
+        background-color:grey;
+        margin:0;
+      }
+    </style>
+
 {% endblock %}
 
 {% block body %}
-
-
+    <div class="title">
+      <h2>All Books</h2>
+    </div>
+    <div>
+        <table class = "table table-bordered table-hover table-dark ">
+            <th scope = "col">Isbn</th>
+            <th scope = "col">Title</th>
+            <th scope = "col">Author</th>
+            <th scope = "col">Year</th>
+            <th scope = "col">Owned by</th>
+            <th scope = "col">Reviewed by</th>
+            {% for book in books %}
+            <tr>
+                <td><a href="{{ url_for('books') }}/{{ book.isbn }}">{{ book.isbn }}</a></td>
+                <td><a href="{{ url_for('books') }}/{{ book.isbn }}">{{ book.title }}</a></td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.year }}</td>
+                <td>{{ book.owned_by }}</td>
+                <td>{{ book.reviewed_by }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}

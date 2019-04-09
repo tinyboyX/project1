@@ -34,11 +34,11 @@ def signing_up():
     name = request.form.get('name')
     password = request.form.get('password')
     if name == "" or password == "":
-        return render_template("signup.html", message = "Username and password can not be empty")
+        return render_template("sign_up.html", message = "Username and password can not be empty")
     elif " " in name:
-        return render_template("signup.html", message = "Username can not contain space bar")
+        return render_template("sign_up.html", message = "Username can not contain space bar")
     elif db.execute("SELECT * FROM users WHERE username = :name",{"name": name}).rowcount == 1:
-        return render_template("signup.html", message ="This username is not available")
+        return render_template("sign_up.html", message ="This username is not available")
     db.execute("INSERT INTO users (username, password) VALUES (:name, :password)", {"name":name, "password":password})
     db.commit()
     return render_template("success.html")
@@ -54,10 +54,19 @@ def loging_in():
     else:
         return render_template("login.html", message = "Your username or password is incorrect!")
 
-@app.route("/menu")
-def menu():
-    return render_template("menu.html")
+@app.route("/users")
+def users():
+    users = db.execute("SELECT * FROM users").fetchall()
+    return render_template("users.html", users = users)
 
 @app.route("/books")
 def books():
-    return render_template("books.html")
+    books = db.execute("SELECT * FROM books").fetchall()
+    return render_template("books.html", books = books)
+
+@app.route("/menu")
+def search():
+    if not session.get("logged_in"):
+        return redirect("/")
+    else:
+        return render_template("menu.html")
