@@ -1,21 +1,8 @@
 {% extends "inner_layout.html" %}
 
 {% block heading %}
-    <title>Books Table</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        a
-        {
-            margin: 20px;
-        }
-        a.custom-card,
-        a.custom-card:hover
-        {
-            text-decoration: none;
-        }
-    </style>
+    <title>Books Table</title>  
 {% endblock %}
-
 {% block body %}
     <h2 style="text-align:center">Search Result</h2>
         {% for book in books %}

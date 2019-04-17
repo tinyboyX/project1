@@ -77,7 +77,6 @@ def searching():
     isbn =  "%"+ request.form.get("isbn") + "%"
     title = "%"+ request.form.get("title") + "%"
     author = "%"+ request.form.get("author") + "%"
-
     try:
         year = int(request.form.get("year"))
         books = db.execute("SELECT * FROM books WHERE isbn LIKE :isbn AND title LIKE :title AND author LIKE :author AND year = :year" ,{"isbn": isbn, "title": title, "author":author,"year":year}).fetchall()
