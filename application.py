@@ -86,3 +86,8 @@ def searching():
         return render_template("menu.html", message = "There is no book with that infomation")
     else:
         return render_template("search_result.html", books = books)
+
+ @app.route("/reviews")
+def reviews():
+    reviews = db.execute("SELECT * FROM reviews").fetchall()
+    return render_template("reviews.html", reviews = reviews)
